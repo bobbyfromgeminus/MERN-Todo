@@ -1,24 +1,17 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import Welcome from './components/Welcome';
 import TodoTable from './components/TodoTable';
 import TodoEditor from './components/TodoEditor';
 import TodoCreator from './components/TodoCreator';
 
 function App() {
 
-  const apiUrl = '/todos';
-  /*const components = {
-    welcome: <Welcome/>,
-    table: <TodoTable todos={todos} handleTodoEditor={handleTodoEditor} deleteTodo={deleteTodo} handleTodoCreator={handleTodoCreator}/>,
-    editor: <TodoEditor selectedTodo={selectedTodo} updateTodo={updateTodo}/>,
-    creator: <TodoCreator createNewTodo={createNewTodo}/>
-  }*/
-
   const [fetchCounter, setFetchCounter] = useState(0);
   const [todos, setTodos] = useState([]);
   const [selectedTodo, setSelectedTodo] = useState({});
   const [component, setComponent] = useState('creator');
+  
+  const apiUrl = '/todos';
 
   const fetchData = async (reqMethod, urlExt = '', data = null) => {
     const url = apiUrl + urlExt;
@@ -60,18 +53,10 @@ function App() {
     setComponent('editor');
   }
 
-  const switcher = () => {
-    let switchButton = document.getElementById('switcher');
-    if (component === 'creator') {
-      switchButton.textContent = 'Create new Todo';
-      setComponent('table');
-    } else if (component === 'table') {
-      switchButton.textContent = 'Show Todos';
-      setComponent('creator');
-    } else if (component === 'editor') {
-      switchButton.textContent = 'Show Todos';
-      setComponent('table');
-    }
+  const switcher = (target) => {
+    if (target === 'table') setComponent('table');
+    else if (target === 'creator') setComponent('creator');
+    else if (target === 'editor') setComponent('editor');
   }
 
 
@@ -82,7 +67,7 @@ function App() {
       const createdTodo = await fetchData('POST', ``, user);
       setFetchCounter(fetchCounter + 1);
       setSelectedTodo(createdTodo);
-      switcher();
+      switcher('table');
     } catch (error) {
       console.error('Hiba történt:', error);
     }
@@ -97,7 +82,7 @@ function App() {
       const updatedTodo = await fetchData('PATCH', `/${todo._id}`, todoMod);
       setFetchCounter(fetchCounter + 1);
       setSelectedTodo(updatedTodo);
-      switcher();
+      switcher('table');
     } catch (error) {
       console.error('Hiba történt:', error);
     }
@@ -119,23 +104,13 @@ function App() {
   return (
     <div id="root-content">
       <h2>T O D O</h2>
-      <button type="button" id="switcher" onClick={switcher}>Show Todos</button>
-      {
-        component === 'creator' && <TodoCreator createNewTodo={createNewTodo}/>
-      }
-      {
-        component === 'table' && <TodoTable todos={todos} handleTodoEditor={handleTodoEditor} deleteTodo={deleteTodo}/>
-      }
-      {
-        component === 'editor' && <TodoEditor selectedTodo={selectedTodo} updateTodo={updateTodo}/>
-      }
-      {
-        component !== 'creator' && component !== 'table' && component !== 'editor' && <Welcome/>
-      }
-      
+      { component === 'creator' && <TodoCreator switcher={switcher} createNewTodo={createNewTodo}/> }
+      { component === 'table' && <TodoTable switcher={switcher} todos={todos} handleTodoEditor={handleTodoEditor} deleteTodo={deleteTodo}/> }
+      { component === 'editor' && <TodoEditor switcher={switcher} selectedTodo={selectedTodo} updateTodo={updateTodo}/> }
       
     </div>
   )
+
 }
 
 export default App;

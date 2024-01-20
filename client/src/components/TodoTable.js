@@ -2,11 +2,14 @@ function TodoTable(props) {
 
   return (
     <>
+      <button type="button" onClick={ () => props.switcher('creator') }>Create new Todo</button>
       <table>
           <thead>
+            <tr>
               <th>title</th>
               <th>comment</th>
               <th></th>
+            </tr>
           </thead>
           <tbody>
             {props.todos.map((todo, index) => (

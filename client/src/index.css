@@ -199,13 +199,22 @@ h1 p i {
 #root #root-content table {
     display: block;
     width: 100%;
+    max-height: 475px;
     font-size: .8rem;
     border-spacing: 0;
     border-collapse: separate;
     margin-top: 1rem;
     border-radius: 5px;
-    overflow: hidden;
+    overflow-y: auto;
     background-color: rgba(255, 255, 255, .7);
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
 }
 
 #root #root-content table th, #root #root-content table td {

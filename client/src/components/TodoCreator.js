@@ -10,6 +10,7 @@ function TodoCreator(props) {
 
   return (
     <>
+      <button type="button" onClick={ () => props.switcher('table') }>Show Todos</button>
       <form>
           <div className="form-group">
               <label htmlFor="title">Title</label>
