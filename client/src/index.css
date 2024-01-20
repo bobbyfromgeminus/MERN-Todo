@@ -1,0 +1,256 @@
+:root {
+    --primary: rgba(2, 92, 92, 1);
+    --primary-hidden: rgba(2, 92, 92, 0);
+    --secondary: rgb(158, 12, 97);
+    --secondary-hidden: rgba(4, 138, 138, 0);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: "Poppins", sans-serif;
+    transition: all .2s ease-in-out;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#circle_1 {
+    position: absolute;
+    top: -40vh;
+    left: -40vh;
+    width: 80vh;
+    height: 80vh;
+    border-radius: 33vh;
+    background: rgb(174,222,222);
+    background: linear-gradient(150deg, rgba(174,222,222,1) 0%, rgba(247,179,190,1) 100%);
+}
+
+#circle_2 {
+    position: absolute;
+    bottom: -40vh;
+    right: -40vh;
+    width: 80vh;
+    height: 80vh;
+    border-radius: 33vh;
+    background: rgb(174,222,222);
+    background: linear-gradient(330deg, rgba(174,222,222,1) 0%, rgba(247,179,190,1) 100%);
+}
+
+#mask {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background: rgb(167,210,241);
+    background: linear-gradient(30deg, rgba(167,210,241,.2) 0%, rgba(247,179,241,.2) 100%);
+    backdrop-filter: blur(12rem);
+}
+
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 8rem;
+    transform: translateY(-100%);
+    font-weight: 200;
+    font-size: 3rem;
+    line-height: 4.2rem;
+    text-transform: uppercase;
+    color: rgb(29, 29, 30);
+    letter-spacing: .1rem;
+    border-left: 1rem solid rgb(13, 191, 191);
+    padding: .5rem 2.5rem;
+}
+
+h1 b {
+    font-size: 5.5rem;
+    font-weight: 800;
+    letter-spacing: .8rem;
+}
+
+h1 p {
+    font-size: .85rem;
+    line-height: 1.3rem;
+    font-weight: 400;
+    letter-spacing: .1rem;
+}
+
+h1 p i {
+    font-weight: 100;
+    font-style: normal;
+}
+
+#root {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 333px;
+    height: 650px;
+    transform: translateX(-50%) translateY(-50%) scale(.9) rotate(-3deg);
+    border: .8rem solid white;
+    border-radius: 2.5rem;
+    background-color: rgb(73,75,78);
+    color: rgb(73,75,78);
+    box-shadow: .3rem 1rem 1rem rgba(0, 0, 0, .5),
+                0 0 0.4em rgba(0, 0, 0, .2) inset;
+    padding: 1.5rem;
+    transition: all .4s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#root:hover {
+    background-color: rgb(189, 198, 204);
+    transform: translateX(-50%) translateY(-50%) scale(1) rotate(0deg);
+    box-shadow: .5rem 2rem 2rem rgba(0, 0, 0, .3),
+                0 0 0.4em rgba(0, 0, 0, .3) inset;
+}
+
+#root #root-content {
+    opacity: 0;
+}
+
+#root:hover #root-content {
+    opacity: 1;
+}
+
+#root #root-content h2 {
+    text-align: center;
+    font-size: 1.3rem;
+    background-color: var(--primary);
+    color: white;
+    padding: .3rem 1rem;
+    font-weight: 200;
+    letter-spacing: .2rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+#root #root-content form {
+    line-height: .8rem;
+    padding: .5rem 1rem;
+    background-color: rgba(255, 255, 255, .7);
+    display: block;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+#root #root-content form label {
+    font-size: .6rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    color: var(--primary);
+}
+
+#root #root-content form input {
+    font-size: .85rem;
+    display: block;
+    width: 100%;
+    padding: .2rem .5rem;
+    background-color: rgba(255, 255, 255, .4);
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 3px;
+    margin-bottom: .6rem;
+}
+
+#root #root-content form input:hover {
+    background-color: rgba(255, 255, 255, .6);
+}
+
+#root #root-content form input:focus {
+    border: 1px solid var(--primary);
+    background-color: rgba(255, 255, 255, .8);
+}
+
+#root #root-content button {
+    font-size: .85rem;
+    display: block;
+    width: 100%;
+    padding: .2rem .5rem;
+    background-color: var(--secondary);
+    color: white;
+    font-weight: 500;
+    outline: none;
+    border: 1px solid var(--secondary);
+    border-radius: 3px;
+    margin-top: .6rem;
+    cursor: pointer;
+}
+
+#root #root-content button:hover {
+    background-color: white;
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+    letter-spacing: .2rem;
+}
+
+#root #root-content table {
+    display: block;
+    width: 100%;
+    font-size: .8rem;
+    border-spacing: 0;
+    border-collapse: separate;
+    margin-top: 1rem;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, .7);
+}
+
+#root #root-content table th, #root #root-content table td {
+    text-align: left;
+    padding: .15rem .5rem;
+    border-bottom: 1px solid var(--primary-hidden);
+}
+
+#root #root-content table th {
+    background-color: var(--primary);
+    font-weight: 600;
+    color: white;
+}
+
+#root #root-content table tr:hover td {
+    color:var(--primary);
+    border-bottom: 1px solid var(--primary);
+}
+
+#root #root-content table tr:nth-child(even) td {
+    background-color: rgba(255, 255, 255, .6);
+}
+
+#root #root-content table tr td:nth-child(1) {
+    width: 40%;
+    font-size: .7rem;
+    font-weight: 500;
+}
+
+#root #root-content table tr td:nth-child(2) {
+    width: 50%;
+    font-size: .6rem;
+    text-align: justify;
+}
+
+#root #root-content table tr td:nth-child(3) {
+    width: 10%;
+}
+
+#root #root-content table tr td:nth-child(3) i {
+    font-size: 1rem;
+    color: rgb(171, 182, 182);
+}
+
+#root #root-content table tr td:nth-child(3) i:hover {
+    font-size: 1rem;
+    color: var(--primary);
+}
