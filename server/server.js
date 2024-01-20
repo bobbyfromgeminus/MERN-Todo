@@ -1,10 +1,12 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import Todo from './models/Todo.js';
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 
 // --- M O N G O D B  --------------------------------------------
